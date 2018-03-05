@@ -1,4 +1,3 @@
-from __future__ import print_function
 import keras
 from keras.datasets import mnist
 from keras.models import Sequential
@@ -35,13 +34,13 @@ def preprocess(x_train, x_test, y_train, y_test):
 	return x_train, x_test, y_train, y_test
 
 batch_size = 128 #Size of the batch to train, splits the data into chunks and trains on one chunk at a time
-epochs = 5 #6 epochs are reasonable
+epochs = 5 #How many iterations should the neural net go over the whole dataset?
 
 # input image dimensions
 img_width, img_height = 28, 28
 
 # Data handling
-input_shape = (img_width, img_height, 1) #An image is 3-D: Width, height and color. 
+input_shape = (img_width, img_height, 1) #An image is 3-D: Width, height and color-channel. 
 
 # Split the dataset into train and test-sets. Normally one uses train, test and validation to avoid selection-bias
 (x_train, y_train), (x_test, y_test) = mnist.load_data() #Loads the mnist dataset
@@ -75,4 +74,4 @@ model.fit(x_train, y_train,
 
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
-print('Test accuracy:', score[1]) # 5 epochs gave a test accuracy of around 97 %
+print('Test accuracy:', score[1]) # 5 epochs gave a test accuracy of around 98 %
